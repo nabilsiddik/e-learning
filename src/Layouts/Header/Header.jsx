@@ -14,9 +14,22 @@ const Header = () => {
             </div>
             
             <nav className="menu">
-                <ul className='flex items-center gap-5'>
+                <ul className='flex items-center gap-5 text-lg'>
                     <Link to={'/'}>Home</Link>
-                    <Link to={'/course'}>Course</Link>
+                    <Link to={'/course-page'}>Course</Link>
+                    
+                    <div className="relative group">
+                        <Link className='relative hover:'> Categories</Link>
+                        <div className="drop_down">
+                                <div className='flex flex-col bg-warning w-[220px] py-5 absolute top-full left-[50%] right-[50%] translate-x-[-50%] z-10 rounded-lg gap-2 font-bold hidden group-hover:flex'>
+                                    <Link to='/category/web-development' className='bg-yellow-400 py-2 text-center px-2'>Web Development</Link>
+                                    <Link to='/category/app-development' className='bg-yellow-400 py-2 text-center px-2'>App Development</Link>
+                                    <Link to='/category/graphic-designt' className='bg-yellow-400 py-2 text-center px-2'>Graphic Design</Link>
+                                    <Link to='/category/digital-marketing' className='bg-yellow-400 py-2 text-center px-2'>Digital Marketing</Link>
+                                </div>
+                        </div>
+                    </div>
+
                     <Link to={'/contact'}>contact</Link>
                 </ul>
             </nav>

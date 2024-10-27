@@ -4,6 +4,7 @@ import Header from './Layouts/Header/Header'
 import Home from './Pages/Home/Home'
 import Contact from './Pages/Contact/Contact'
 import CoursePage from './Pages/CoursePage/CoursePage'
+import CategoryPage from './Pages/Category/CategoryPage';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/course-page' element={<CoursePage />} />
+        <Route path='/category/:categoryName' element={<CategoryPage />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>
     </BrowserRouter>

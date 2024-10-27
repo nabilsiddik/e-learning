@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Web Development Masterclass",
-        "short_desc": "Learn HTML, CSS, JavaScript, and more to become a web developer.",
+        "short_desc": "Learn HTML, CSS, JavaScript, and more to become a web developer. Learn HTML, CSS, JavaScript, and more to become a web developer.",
         "rating": 4.7,
         "regular_price": 1500,
         "discounted_price": 750,

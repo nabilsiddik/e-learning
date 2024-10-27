@@ -1,22 +1,21 @@
 import React, { createContext, useEffect, useState } from 'react'
+import { allCourseData } from '../../Data/allCourseData'
 
 const courseContext = createContext(null)
 
 const CourseContext = (props) => {
 
-    const [allCourses, setAllCourses] = useState([])
+    const [allCourses, setAllCourses] = useState(allCourseData)
 
-    // Fetch Data from API
-    useEffect(() => {
-        fetch('courses.json')
-        .then(res => res.json())
-        .then(data => setAllCourses(data))
-        .catch(err => console.log('Error while fetching Data'))
-    }, [])
+    // Short a text
+    const shortenText = (text, numOfChar) => {
+        return text.length > numOfChar ? text.substring(0, numOfChar) + '...' : text
+    }
 
     const contextValue = {
         allCourses,
-        setAllCourses
+        setAllCourses,
+        shortenText
     }
 
   return (
