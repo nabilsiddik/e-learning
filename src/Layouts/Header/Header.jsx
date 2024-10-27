@@ -15,8 +15,9 @@ const Header = () => {
             
             <nav className="menu">
                 <ul className='flex items-center gap-5'>
-                    <Link>Home</Link>
-                    <Link>Courses</Link>
+                    <Link to={'/'}>Home</Link>
+                    <Link to={'/course'}>Course</Link>
+                    <Link to={'/contact'}>contact</Link>
                 </ul>
             </nav>
             <div className="accounts">
