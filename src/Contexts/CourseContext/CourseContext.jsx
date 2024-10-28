@@ -5,6 +5,7 @@ const courseContext = createContext(null)
 
 const CourseContext = (props) => {
 
+    const [isLogedIn, setIsLogedIn] = useState(true)
     const [allCourses, setAllCourses] = useState(allCourseData)
 
     // Short a text
@@ -22,7 +23,9 @@ const CourseContext = (props) => {
         allCourses,
         setAllCourses,
         shortenText,
-        getCourseUsingId
+        getCourseUsingId,
+        isLogedIn,
+        setIsLogedIn
     }
 
   return (
