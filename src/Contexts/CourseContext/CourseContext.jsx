@@ -12,10 +12,17 @@ const CourseContext = (props) => {
         return text.length > numOfChar ? text.substring(0, numOfChar) + '...' : text
     }
 
+    // Get product using ID
+    const getCourseUsingId = (productsToLoop, productIdToFind) => {
+      const currentProduct = productsToLoop.find((productItem) => productItem.id === Number(productIdToFind))
+      return currentProduct
+    }
+
     const contextValue = {
         allCourses,
         setAllCourses,
-        shortenText
+        shortenText,
+        getCourseUsingId
     }
 
   return (

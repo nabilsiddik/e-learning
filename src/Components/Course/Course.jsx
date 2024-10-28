@@ -1,23 +1,27 @@
 import React, { useContext } from 'react'
 import { PropTypes } from 'prop-types';
 import { courseContext } from '../../Contexts/CourseContext/CourseContext';
+import { Link } from 'react-router-dom';
 
 const Course = ({course}) => {
 
   const {shortenText} = useContext(courseContext)
-
-  const {thumbnail_url, title, regular_price, discounted_price, short_desc} = course
+  const {thumbnail_url, title, regular_price, discounted_price, short_desc, id} = course
 
   return (
     <div id='Course'>
         <div class="card lg:card-compact bg-base-100 w-full shadow-xl">
             <figure>
-                <img className='w-full'
-                src={thumbnail_url}
-                alt="Shoes" />
+                <Link className='w-full' to={`/single-product/${id}`}>
+                    <img className='w-full'
+                    src={thumbnail_url}
+                    alt="Shoes" />
+                </Link>
             </figure>
             <div class="card-body px-50 min-h-[230px]">
-                <h2 class="card-title text-xl">{title}</h2>
+                <Link to={`/single-product/${id}`}>
+                    <h2 class="card-title text-xl">{title}</h2>
+                </Link>
                 <p>{shortenText(short_desc, 50)}</p>
                 <div className="prices flex items-center gap-3">
                     <span className="discounted_price font-bold">

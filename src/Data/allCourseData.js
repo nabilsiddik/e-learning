@@ -8,22 +8,21 @@ export const allCourseData = [
         discounted_price: 750,
         promo_code: "WEBDEV50",
         thumbnail_url: "https://cdn.10minuteschool.com/images/thumbnails/BCS_Preli_Recorded_Course_Thumbnail.jpg?w=272&h=152",
-        intro_video_url: "http://example.com/webdev_intro",
+        intro_video_url: "https://www.youtube.com/embed/AmI7PHx_iRY?si=9vM9Q26gFf8Kq-H6",
         category: "Web Development",
         instructor: {
             instructor_profile_url: "https://www.example.com/instructors/john-doe",
             name: "John Doe",
             education: "BSc in Computer Science, MIT"
         },
-        course_modules: [
-            {
-                enrolled: 1200,
-                watch_time: 40,
-                total_video: 100,
-                total_quize: 15,
-                total_notes: 80
-            }
-        ],
+        course_modules: {
+            enrolled: 1200,
+            watch_time: 40,
+            total_video: 100,
+            video_lectures: 105,
+            total_quize: 15,
+            total_notes: 80
+        },
         faqs: [
             {
                 question: "Do I need prior experience?",
@@ -42,6 +41,7 @@ export const allCourseData = [
         ]
     },
     {
+        id: 2,
         title: "Python for Data Science",
         short_desc: "Master Python and its libraries for data analysis.",
         rating: 4.8,
@@ -83,6 +83,7 @@ export const allCourseData = [
         ]
     },
     {
+        id: 3,
         title: "Graphic Design for Beginners",
         short_desc: "A complete guide to using Photoshop and Illustrator.",
         rating: 4.6,
@@ -124,6 +125,7 @@ export const allCourseData = [
         ]
     },
     {
+        id: 4,
         title: "Advanced Excel for Professionals",
         short_desc: "Learn advanced Excel skills for data analysis and automation.",
         rating: 4.9,
@@ -165,6 +167,7 @@ export const allCourseData = [
         ]
     },
     {
+        id: 5,
         title: "Digital Marketing Strategy",
         short_desc: "Master digital marketing techniques to grow your business.",
         rating: 4.7,
