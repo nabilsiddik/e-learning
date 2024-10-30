@@ -10,6 +10,7 @@ export const allCourseData = [
         thumbnail_url: "https://cdn.10minuteschool.com/images/thumbnails/BCS_Preli_Recorded_Course_Thumbnail.jpg?w=272&h=152",
         intro_video_url: "https://www.youtube.com/embed/AmI7PHx_iRY?si=9vM9Q26gFf8Kq-H6",
         category: "Web Development",
+        isOnCart: false,
         instructor: {
             instructor_profile_url: "https://www.example.com/instructors/john-doe",
             name: "John Doe",
@@ -80,6 +81,7 @@ export const allCourseData = [
         thumbnail_url: "https://cdn.10minuteschool.com/images/skills/Updated_Thumbnail_v3/shorkari_chakri_prostuti_rac.jpg?w=272&h=152",
         intro_video_url: "https://www.youtube.com/embed/vlnay6Mkp30",
         category: "Data Science",
+        isOnCart: false,
         instructor: {
             instructor_profile_url: "https://www.example.com/instructors/jane-smith",
             name: "Jane Smith",
@@ -145,6 +147,7 @@ export const allCourseData = [
         thumbnail_url: "https://cdn.10minuteschool.com/images/thumbnails/bank_jobs_question_solve_course_model_test.jpg?w=272&h=152",
         intro_video_url: "https://www.youtube.com/embed/kC6C5hPhMmg",
         category: "Digital Marketing",
+        isOnCart: false,
         instructor: {
             instructor_profile_url: "https://www.example.com/instructors/sarah-lee",
             name: "Sarah Lee",

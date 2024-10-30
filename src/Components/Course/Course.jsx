@@ -2,11 +2,31 @@ import React, { useContext } from 'react'
 import { PropTypes } from 'prop-types';
 import { courseContext } from '../../Contexts/CourseContext/CourseContext';
 import { Link } from 'react-router-dom';
+import { shopContext } from '../../Contexts/ShopContext/ShopContext';
 
 const Course = ({course}) => {
 
-  const {shortenText} = useContext(courseContext)
-  const {thumbnail_url, title, regular_price, discounted_price, short_desc, id} = course
+  const {shortenText, allCourses, setAllCourses} = useContext(courseContext)
+  const {cart, setCart} = useContext(shopContext)
+  const {thumbnail_url, title, regular_price, discounted_price, short_desc, id, isOnCart} = course
+
+  const handleEnrollButton = (id) => {
+    allCourses.map((courseItem) => {
+        if(courseItem.id === id){
+            if(!courseItem.isOnCart){
+                setCart((prevCarItems) => [...prevCarItems, courseItem])
+            }else{
+                alert('Item Already In cart')
+            }  
+        }
+    })
+        
+    setAllCourses((prevItems) => 
+        prevItems.map((item) => 
+            item.id === id ? {...item, isOnCart: true} : item
+        )
+    )
+  }
 
   return (
     <div id='Course'>
@@ -32,7 +52,7 @@ const Course = ({course}) => {
                     </span>
                 </div>
                 <div class="card-actions justify-end">
-                <button class="w-full btn btn-warning">Enrol Now</button>
+                    <button onClick={()=> handleEnrollButton(id)} class="w-full btn btn-warning">{isOnCart ? 'Enrolled' : 'Enroll Now'}</button>
                 </div>
             </div>
         </div>
