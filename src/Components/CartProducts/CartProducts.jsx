@@ -8,15 +8,9 @@ const CartProducts = () => {
 
   return (
     <div>
-      {cart.length > 0 ?
-
-        cart.map((cartItem) => {
+      {cart.map((cartItem) => {
             return <CartProduct key={cartItem.id} cartItem = {cartItem}/>
-        })
-
-      : 
-        <h1 className='font-bold text-center text-2xl'>Cart Is Empty</h1>
-      }
+      })} 
     </div>
   )
 }
