@@ -7,6 +7,7 @@ import CoursePage from './Pages/CoursePage/CoursePage'
 import CategoryPage from './Pages/Category/CategoryPage';
 import SingleProduct from './Pages/SingleProduct/SingleProduct'
 import VideoPage from './Pages/VideoPage/VideoPage';
+import CartPage from './Pages/CartPage/CartPage'
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
         <Route path='/single-product/:productId' element={<SingleProduct/>}/>
         <Route path='/category/:categoryName' element={<CategoryPage />} />
         <Route path='/video/:videoTitle/:videoId' element={<VideoPage/>} />
+
+        <Route path='/cart' element={<CartPage />} />
+
         <Route path='/contact' element={<Contact />} />
       </Routes>
     </BrowserRouter>

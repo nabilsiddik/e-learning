@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaPlay } from "react-icons/fa";
 import { MdOutlinePayment } from "react-icons/md";
 import { CiStopwatch } from "react-icons/ci";
 import { IoVideocamOutline } from "react-icons/io5";
 import { MdOutlineQuiz } from "react-icons/md";
 import { GrNotes } from "react-icons/gr";
+import { shopContext } from '../../Contexts/ShopContext/ShopContext';
+import { courseContext } from '../../Contexts/CourseContext/CourseContext';
 
 
 
 const EnrolCard = ({currentCourse}) => {
 
     const [playVideo, setPlayVideo] = useState(false)
-    const {title,thumbnail_url, discounted_price, regular_price, course_modules: { enrolled, watch_time, total_video, total_quize, total_notes, video_lectures } = {}} = currentCourse 
+    const {id, title,thumbnail_url, discounted_price, regular_price, isOnCart, course_modules: { enrolled, watch_time, total_video, total_quize, total_notes, video_lectures } = {}} = currentCourse 
+    const {handleEnrollButton, setCart} = useContext(shopContext)
+    const {allCourses, setAllCourses} = useContext(courseContext)
     
     const handleIntroVideo = () => {
         setPlayVideo(true)
@@ -47,7 +51,7 @@ const EnrolCard = ({currentCourse}) => {
                 </span>
         </div>
         <h3 className='font-bold text-lg mb-4'>{title}</h3>
-        <button className='btn btn-success text-white w-full font-bold text-lg'>Enroll Course</button>
+        <button onClick={()=> handleEnrollButton(allCourses, setAllCourses, setCart, id)} className='btn btn-success text-white w-full font-bold text-lg'>{isOnCart ? 'Enrolled' : 'Enroll Course'}</button>
 
         <div className="course_have my-8">
             <h3 className='font-bold text-lg mb-2'>This Course Has</h3>

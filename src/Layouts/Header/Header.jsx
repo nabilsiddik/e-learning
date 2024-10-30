@@ -44,10 +44,12 @@ const Header = () => {
                     <FaRegUserCircle className='text-xl' />
                     <p>Nabil Siddik</p>
                 </div>
-                <div className='relative'>
-                    <MdOutlineShoppingCart className='text-2xl' />
-                    <div className="cart_count absolute w-[26px] h-[26px] bg-yellow-500 font-bold rounded-full flex items-center justify-center top-[-23px] right-[-20px] text-sm">{cart.length}</div>
-                </div>
+                <Link to='/cart'>
+                    <div className='relative'>
+                        <MdOutlineShoppingCart className='text-2xl' />
+                        <div className="cart_count absolute w-[26px] h-[26px] bg-yellow-500 font-bold rounded-full flex items-center justify-center top-[-23px] right-[-20px] text-sm">{cart.length}</div>
+                    </div>
+                </Link>
             </div>
         </div>
     </header>
