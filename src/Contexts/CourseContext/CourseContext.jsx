@@ -19,13 +19,14 @@ const CourseContext = (props) => {
       return currentProduct
     }
 
+
     const contextValue = {
         allCourses,
         setAllCourses,
         shortenText,
         getCourseUsingId,
         isLogedIn,
-        setIsLogedIn
+        setIsLogedIn,
     }
 
   return (

@@ -21,8 +21,8 @@ const Header = () => {
             
             <nav className="menu">
                 <ul className='flex items-center gap-5 text-lg'>
-                    <Link to={'/'}>Home</Link>
-                    <Link to={'/course-page'}>Course</Link>
+                    <Link to='/'>Home</Link>
+                    <Link to='/courses'>Course</Link>
                     
                     <div className="relative group">
                         <Link className='relative hover:'> Categories</Link>
