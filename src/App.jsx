@@ -8,6 +8,7 @@ import SingleProduct from './Pages/SingleProduct/SingleProduct'
 import VideoPage from './Pages/VideoPage/VideoPage';
 import CartPage from './Pages/CartPage/CartPage'
 import CoursePage from './Pages/CoursePage/CoursePage'
+import Dashboard from './Dashboards/Dashboard'
 
 function App() {
 

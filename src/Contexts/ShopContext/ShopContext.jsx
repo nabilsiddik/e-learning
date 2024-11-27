@@ -8,7 +8,6 @@ const ShopContext = (props) => {
     const [cart, setCart] = useState([])
 
     // Handle Enroll Button
-    
   const handleEnrollButton = (allCourses, setAllCourses, setCart, id) => {
     allCourses.map((courseItem) => {
         if(courseItem.id === id){
