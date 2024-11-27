@@ -8,34 +8,34 @@ const Course = ({course}) => {
 
   const {shortenText, allCourses, setAllCourses} = useContext(courseContext)
   const {setCart, handleEnrollButton} = useContext(shopContext)
-  const {thumbnail_url, title, regular_price, discounted_price, short_desc, id, isOnCart} = course
+  const {_id, title, thumbnailUrl, description, price, category} = course
 
 
   return (
     <div id='Course'>
         <div className="card lg:card-compact bg-base-100 w-full shadow-xl">
             <figure>
-                <Link className='w-full' to={`/single-product/${id}`}>
+                <Link className='w-full' to={`/single-product/${_id}`}>
                     <img className='w-full'
-                    src={thumbnail_url}
+                    src={thumbnailUrl}
                     alt="Shoes" />
                 </Link>
             </figure>
             <div className="card-body px-50 min-h-[230px]">
-                <Link to={`/single-product/${id}`}>
+                <Link to={`/single-product/${_id}`}>
                     <h2 className="card-title text-xl">{title}</h2>
                 </Link>
-                <p>{shortenText(short_desc, 50)}</p>
+                <p>{shortenText(description, 50)}</p>
                 <div className="prices flex items-center gap-3">
                     <span className="discounted_price font-bold">
-                        ${discounted_price}
+                        ${price}
                     </span>
                     <span className="regular_price font-bold">
-                        <del>${regular_price}</del>
+                        <del>100</del>
                     </span>
                 </div>
                 <div className="card-actions justify-end">
-                    <button onClick={()=> handleEnrollButton(allCourses, setAllCourses, setCart, id)} className="w-full btn btn-warning">{isOnCart ? 'Enrolled' : 'Enroll Now'}</button>
+                    <button onClick={()=> handleEnrollButton(allCourses, setAllCourses, setCart, _id)} className="w-full btn btn-warning">Enroll Now</button>
                 </div>
             </div>
         </div>

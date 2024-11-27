@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { courseContext } from '../../Contexts/CourseContext/CourseContext';
 import DisplayCourses from '../../Components/DisplayCourses/DisplayCourses';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
 
   const { allCourses } = useContext(courseContext)
+  const courses = useLoaderData()
 
   return (
     <div id='home_page' className='py-5'>
@@ -12,7 +14,7 @@ const Home = () => {
         <h2 className='font-bold text-2xl mb-5'>All Courses</h2>
 
         <div className="display_all_courses">
-          <DisplayCourses mapFrom={allCourses}/>
+          <DisplayCourses mapFrom={courses}/>
         </div>
       </div>
     </div>

@@ -37,6 +37,7 @@ const Header = () => {
                     </div>
 
                     <Link to={'/contact'}>contact</Link>
+                    <Link to={'/instructor-dashboard'}>Dashboard</Link>
                 </ul>
             </nav>
             <div className="icons flex items-center gap-3">

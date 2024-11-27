@@ -16,6 +16,10 @@ import Contact from './Pages/Contact/Contact';
 import CartPage from './Pages/CartPage/CartPage';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
 import VideoPage from './Pages/VideoPage/VideoPage';
+import AdminDashboard from './Dashboards/AdminDashboard/AdminDashboard.jsx'
+import InstructorDashboard from './Dashboards/InstructorDashboard/InstructorDashboard.jsx'
+import AddCourse from './Components/AddCourse/AddCourse.jsx'
+import AllCoursesOfInstructor from './Components/AllCoursesOfInstructor/AllCoursesOfInstructor.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,7 +28,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home/>,
+        loader: ()=> fetch('http://localhost:5000/courses')
       },
       {
         path: '/courses',
@@ -49,6 +54,21 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact/>
+      },
+      {
+        path: '/instructor-dashboard',
+        element: <InstructorDashboard/>,
+        children: [
+          {
+            path: '/instructor-dashboard/add-course',
+            element: <AddCourse/>
+          },
+          {
+            path: '/instructor-dashboard/all-course',
+            element: <AllCoursesOfInstructor/>,
+            loader: () => fetch('http://localhost:5000/courses')
+          },
+        ]
       },
     ]
   },
