@@ -25,7 +25,7 @@ const Header = () => {
                     <Link to='/courses'>Course</Link>
                     
                     <div className="relative group">
-                        <Link className='relative hover:'> Categories</Link>
+                        <div className='relative hover: cursor-pointer'> Categories</div>
                         <div className="drop_down">
                                 <div className='flex flex-col bg-warning w-[220px] py-5 absolute top-full left-[50%] right-[50%] translate-x-[-50%] z-10 rounded-lg gap-2 font-bold hidden group-hover:flex'>
                                     <Link to='/category/web-development' className='bg-yellow-400 py-2 text-center px-2'>Web Development</Link>
