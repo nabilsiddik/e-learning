@@ -14,7 +14,7 @@ const handleAddCourse = (e) => {
 
     const newCourse = { title, thumbnailUrl, description, regularPrice, discountedPrice, category, isOnCart: false, }
 
-    fetch('http://localhost:5000/add-course', {
+    fetch(`http://localhost:5000/add-course`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

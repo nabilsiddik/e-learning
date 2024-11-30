@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { courseContext } from '../../Contexts/CourseContext/CourseContext'
 import { MdHeight } from 'react-icons/md'
 
-const Sidebar = ({filteredCourses, setFilteredCourses}) => {
+const Sidebar = ({filterCourse, setFiltercourse}) => {
 
     const [searchTerm, setSearchTerm] = useState('')
     const {allCourses} = useContext(courseContext)
@@ -19,7 +19,7 @@ const Sidebar = ({filteredCourses, setFilteredCourses}) => {
             return course.title.toLowerCase().startsWith(searchTerm.toLowerCase())
         })
 
-        setFilteredCourses(newCourses)
+        setFiltercourse(newCourses)
     },[searchTerm])
 
 
@@ -32,7 +32,7 @@ const Sidebar = ({filteredCourses, setFilteredCourses}) => {
             const newCourse = allCourses.filter((course) => {
                 return course.discounted_price >= minPrice && course.discounted_price <= maxPrice
             })
-            setFilteredCourses(newCourse)
+            setFiltercourse(newCourse)
         }
     }
 

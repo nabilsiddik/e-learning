@@ -20,6 +20,7 @@ import AdminDashboard from './Dashboards/AdminDashboard/AdminDashboard.jsx'
 import InstructorDashboard from './Dashboards/InstructorDashboard/InstructorDashboard.jsx'
 import AddCourse from './Components/AddCourse/AddCourse.jsx'
 import AllCoursesOfInstructor from './Components/AllCoursesOfInstructor/AllCoursesOfInstructor.jsx'
+import UpdatePage from './Pages/UpdatePage/UpdatePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/courses',
-        element: <CoursePage/>
+        element: <CoursePage/>,
+        loader: () => fetch('http://localhost:5000/courses') 
       },
       {
         path: '/cart',
@@ -54,6 +56,11 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact/>
+      },
+      {
+        path: '/update-course/:id',
+        element: <UpdatePage/>,
+        loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
       },
       {
         path: '/instructor-dashboard',
