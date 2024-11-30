@@ -24,6 +24,7 @@ import UpdatePage from './Pages/UpdatePage/UpdatePage.jsx'
 import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.jsx'
 import AuthContext from './Contexts/AuthContex/AuthContext.jsx'
 import LoginPage from './Pages/LoginPage/LoginPage.jsx'
+import AllUsers from './Components/AllUsers/AllUsers.jsx'
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,26 @@ const router = createBrowserRouter([
         path: '/update-course/:id',
         element: <UpdatePage/>,
         loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+      },
+      {
+        path: '/admin-dashboard',
+        element: <AdminDashboard/>,
+        children: [
+          {
+            path: '/admin-dashboard/add-course',
+            element: <AddCourse/>
+          },
+          {
+            path: '/admin-dashboard/all-course',
+            element: <AllCoursesOfInstructor/>,
+            loader: () => fetch('http://localhost:5000/courses')
+          },
+          {
+            path: '/admin-dashboard/all-users',
+            element: <AllUsers/>,
+            loader: () => fetch('http://localhost:5000/users')
+          }
+        ]
       },
       {
         path: '/instructor-dashboard',

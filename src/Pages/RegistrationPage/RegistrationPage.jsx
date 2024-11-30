@@ -14,11 +14,11 @@ const RegistrationPage = () => {
         const photoUrl = form.photoUrl.value
         const password = form.password.value
         const email = form.email.value
-        const newUser = { name, photoUrl, email, password }
         createUser(email, password, name, photoUrl)
             .then((userCredential) => {
                 console.log(userCredential.user)
-
+                const createdAt = userCredential?.user?.metadata?.creationTime
+                const newUser = { name, photoUrl, email, password, createdAt}
                 // Save new user info to the databas
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
