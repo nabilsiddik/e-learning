@@ -23,6 +23,7 @@ import AllCoursesOfInstructor from './Components/AllCoursesOfInstructor/AllCours
 import UpdatePage from './Pages/UpdatePage/UpdatePage.jsx'
 import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.jsx'
 import AuthContext from './Contexts/AuthContex/AuthContext.jsx'
+import LoginPage from './Pages/LoginPage/LoginPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/registration',
         element: <RegistrationPage/>
+      },
+      {
+        path: '/login',
+        element: <LoginPage/>
       },
       {
         path: '/courses',

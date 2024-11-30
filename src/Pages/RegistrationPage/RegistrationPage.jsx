@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { authContext } from '../../Contexts/AuthContex/AuthContext'
-import { FaGoogle } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa6"
+import Swal from 'sweetalert2'
 
 const RegistrationPage = () => {
 
-    const {createUser, signInWithGoogle} = useContext(authContext)
+    const { createUser, signInWithGoogle, profileUpdate } = useContext(authContext)
 
     const handleRegistration = (e) => {
         e.preventDefault()
@@ -13,8 +14,48 @@ const RegistrationPage = () => {
         const photoUrl = form.photoUrl.value
         const password = form.password.value
         const email = form.email.value
+        const newUser = { name, photoUrl, email, password }
         createUser(email, password, name, photoUrl)
-        
+            .then((userCredential) => {
+                console.log(userCredential.user)
+
+                // Save new user info to the databas
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            console.log('inserted user')
+                        } else {
+                            console.log('Error while inserting')
+                        }
+                    })
+                
+                // Show Success Message
+                Swal.fire({
+                    position: "center center",
+                    icon: "success",
+                    title: "Registratin Successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                profileUpdate({ displayName: name, photoURL: photoUrl })
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
+            })
+
     }
 
     return (
@@ -32,7 +73,7 @@ const RegistrationPage = () => {
 
                         <div className="card bg-base-100 w-full  shrink-0 shadow-2xl">
                             <form onSubmit={handleRegistration} className="card-body">
-                            <div className="form-control">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
