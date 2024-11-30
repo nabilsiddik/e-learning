@@ -21,6 +21,8 @@ import InstructorDashboard from './Dashboards/InstructorDashboard/InstructorDash
 import AddCourse from './Components/AddCourse/AddCourse.jsx'
 import AllCoursesOfInstructor from './Components/AllCoursesOfInstructor/AllCoursesOfInstructor.jsx'
 import UpdatePage from './Pages/UpdatePage/UpdatePage.jsx'
+import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.jsx'
+import AuthContext from './Contexts/AuthContex/AuthContext.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home/>,
         loader: ()=> fetch('http://localhost:5000/courses')
+      },
+      {
+        path: '/registration',
+        element: <RegistrationPage/>
       },
       {
         path: '/courses',
@@ -82,9 +88,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <CourseContext>
+  <AuthContext>
+    <CourseContext>
     <ShopContext>
       <RouterProvider router = {router}></RouterProvider>
     </ShopContext>
-  </CourseContext>,
+  </CourseContext>
+  </AuthContext>,
 )
