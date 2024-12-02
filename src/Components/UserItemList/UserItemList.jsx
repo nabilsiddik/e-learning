@@ -22,7 +22,7 @@ const UserItemList = ({user}) => {
                 <div>
                     <Link to={`/update-course/${_id}`} className='btn bg-yellow-400'>Update</Link>
                 </div>
-                <div className="delete_course text-2xl text-red-600 cursor-pointer">
+                <div className="delete_course text-2xl texzt-red-600 cursor-pointer">
                     <MdDelete />
                 </div>
             </div>

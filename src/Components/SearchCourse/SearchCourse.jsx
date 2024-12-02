@@ -6,20 +6,20 @@ import { courseContext } from '../../Contexts/CourseContext/CourseContext';
 
 const SearchCourse = ({placeholder}) => {
 
-  const [searchTerm, setSearchTerm] = useState('')
-  const {allCourses} = useContext(courseContext)
-  const [searchedCourses, setSearchedCourses] = useState([])
+  // const [searchTerm, setSearchTerm] = useState('')
+  // const {allCourses} = useContext(courseContext)
+  // const [searchedCourses, setSearchedCourses] = useState([])
 
-  useEffect(()=>{
-    const newCourses =  allCourses.filter((course) => course.title.toLowerCase().startsWith(searchTerm.toLowerCase()))
-    setSearchedCourses(newCourses)
-  },[searchTerm])
+  // useEffect(()=>{
+  //   const newCourses =  allCourses.filter((course) => course.title.toLowerCase().startsWith(searchTerm.toLowerCase()))
+  //   setSearchedCourses(newCourses)
+  // },[searchTerm])
 
 
 
   return (
     <div className='search_course border border-borderColor px-5 py-2 rounded-full flex items-center gap-2 relative'>
-        <CiSearch/>
+        {/* <CiSearch/>
         <input onChange={(e)=> setSearchTerm(e.target.value)} value={searchTerm} className='focus:outline-none' type="text" placeholder={placeholder} />
         {searchTerm !== '' && 
           <div className="header_search_dwopdown absolute top-full bg-yellow-400 w-full left-0 py-3 z-10 rounded-lg">
@@ -32,7 +32,7 @@ const SearchCourse = ({placeholder}) => {
             }
           
           </div>
-        }
+        } */}
     </div>
   )
 }

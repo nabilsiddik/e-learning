@@ -1,33 +1,48 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { allCourseData } from '../../Data/allCourseData'
 
 const courseContext = createContext(null)
 
 const CourseContext = (props) => {
 
-    const [isLogedIn, setIsLogedIn] = useState(true)
-    const [allCourses, setAllCourses] = useState(allCourseData)
+  const [isLogedIn, setIsLogedIn] = useState(true)
+  const [courses, setCourses] = useState([])
+  const [cartProducts, setCartProducts] = useState([])
 
-    // Short a text
-    const shortenText = (text, numOfChar) => {
-        return text.length > numOfChar ? text.substring(0, numOfChar) + '...' : text
-    }
+  useEffect(() => {
+    fetch('http://localhost:5000/courses/')
+      .then(res => res.json())
+      .then(data => {
+        setCourses(data)
+      })
+  }, [])
 
-    // Get product using ID
-    const getCourseUsingId = (productsToLoop, productIdToFind) => {
-      const currentProduct = productsToLoop.find((productItem) => productItem.id === Number(productIdToFind))
-      return currentProduct
-    }
+  useEffect(() => {
+    const productIsInCart = courses.filter(course => course.isOnCart)
+    setCartProducts(productIsInCart)
+  }, [courses])
 
 
-    const contextValue = {
-        allCourses,
-        setAllCourses,
-        shortenText,
-        getCourseUsingId,
-        isLogedIn,
-        setIsLogedIn,
-    }
+
+  // Short a text
+  const shortenText = (text, numOfChar) => {
+    return text.length > numOfChar ? text.substring(0, numOfChar) + '...' : text
+  }
+
+  // Get product using ID
+  const getCourseUsingId = (productsToLoop, productIdToFind) => {
+    const currentProduct = productsToLoop.find((productItem) => productItem.id === Number(productIdToFind))
+    return currentProduct
+  }
+
+
+  const contextValue = {
+    courses,
+    shortenText,
+    getCourseUsingId,
+    isLogedIn,
+    setIsLogedIn,
+    cartProducts
+  }
 
   return (
     <courseContext.Provider value={contextValue}>
@@ -36,4 +51,4 @@ const CourseContext = (props) => {
   )
 }
 
-export {CourseContext, courseContext}
+export { CourseContext, courseContext }

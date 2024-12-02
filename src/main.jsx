@@ -25,6 +25,8 @@ import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.jsx'
 import AuthContext from './Contexts/AuthContex/AuthContext.jsx'
 import LoginPage from './Pages/LoginPage/LoginPage.jsx'
 import AllUsers from './Components/AllUsers/AllUsers.jsx'
+import PrivateDashboard from './PrivateRoutes/PrivateDashboard/PrivateDashboard';
+import ProfilePage from './Pages/ProfilePage/ProfilePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -58,8 +60,9 @@ const router = createBrowserRouter([
         element: <CategoryPage/>
       },
       {
-        path: '/single-product/:productId',
-        element: <SingleProduct/>
+        path: '/single-course/:id',
+        element: <SingleProduct/>,
+        loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) 
       },
       {
         path: '/video/:videoTitle/:videoId',
@@ -70,21 +73,31 @@ const router = createBrowserRouter([
         element: <Contact/>
       },
       {
+        path: '/profile',
+        element: <ProfilePage/>
+      },
+      {
         path: '/update-course/:id',
         element: <UpdatePage/>,
         loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
       },
       {
         path: '/admin-dashboard',
-        element: <AdminDashboard/>,
+        element: <PrivateDashboard>
+          <AdminDashboard/>
+        </PrivateDashboard>,
         children: [
           {
             path: '/admin-dashboard/add-course',
-            element: <AddCourse/>
+            element: <PrivateDashboard>
+              <AddCourse/>
+            </PrivateDashboard>
           },
           {
             path: '/admin-dashboard/all-course',
-            element: <AllCoursesOfInstructor/>,
+            element: <PrivateDashboard>
+              <AllCoursesOfInstructor/>
+            </PrivateDashboard>,
             loader: () => fetch('http://localhost:5000/courses')
           },
           {
@@ -96,15 +109,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructor-dashboard',
-        element: <InstructorDashboard/>,
+        element: <PrivateDashboard>
+          <InstructorDashboard/>
+        </PrivateDashboard>,
         children: [
           {
             path: '/instructor-dashboard/add-course',
-            element: <AddCourse/>
+            element: <PrivateDashboard>
+              <AddCourse/>
+            </PrivateDashboard>
           },
           {
             path: '/instructor-dashboard/all-course',
-            element: <AllCoursesOfInstructor/>,
+            element: <PrivateDashboard>
+               <AllCoursesOfInstructor/>
+            </PrivateDashboard>,
             loader: () => fetch('http://localhost:5000/courses')
           },
         ]

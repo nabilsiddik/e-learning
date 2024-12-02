@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
-import { courseContext } from '../../Contexts/CourseContext/CourseContext';
+import React from 'react'
 import EnrolCard from '../../Components/EnrollCard/EnrolCard';
-import { allCourseData } from './../../Data/allCourseData';
 import CourseModules from '../../Components/CourseModules/CourseModules';
+import { useLoaderData } from 'react-router-dom';
 
-const SingleProduct = () => {
+const SingleProduct = () => { 
+  
+  const loadedCourse = useLoaderData()
+  console.log(loadedCourse)
 
-    const {productId} = useParams()
-    const {allCourses, getCourseUsingId} = useContext(courseContext)
-    const {title, short_desc} = getCourseUsingId(allCourses, productId)    
+  const {title, description} = loadedCourse
 
   return (
     <div id='single_product_page'>
@@ -17,11 +16,11 @@ const SingleProduct = () => {
         <div className="container">
             <div className="page_header max-h-[300px] flex gap-10">
                 <div className='w-[70%]'>
-                    <h1 className='font-bold text-4xl mb-4'>{title}</h1>
-                    <p>{short_desc}</p>
+                    <h1 className='font-bold text-4xl mb-4'>{title && title}</h1>
+                    <p>{description && description}</p>
                 </div>
                 <div className='w-[40%]'>
-                    <EnrolCard currentCourse = {getCourseUsingId(allCourses, productId)}/>
+                    <EnrolCard course = {loadedCourse} />
                 </div>
             </div>
         </div>
@@ -30,7 +29,7 @@ const SingleProduct = () => {
       <div className="container">
         <div className="page_body mt-5">
             <div className="left w-[60%]">
-                <CourseModules currentCourse = {getCourseUsingId(allCourses, productId)}/>
+                <CourseModules />
             </div>
         </div>
       </div>

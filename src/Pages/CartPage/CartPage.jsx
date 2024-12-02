@@ -3,18 +3,19 @@ import CartProducts from '../../Components/CartProducts/CartProducts'
 import CartCalculation from '../../Components/CartCalculation/CartCalculation'
 import { shopContext } from '../../Contexts/ShopContext/ShopContext'
 import emptyCart from '../../assets/empty-cart.jpg'
+import { courseContext } from '../../Contexts/CourseContext/CourseContext'
 
 const CartPage = () => {
 
-    const {cart} = useContext(shopContext)
+    const {cartProducts} = useContext(courseContext)
 
   return (
     <div id='cart_page' className='py-8'>
       <div className="container">
-        <h1 className='text-center font-bold text-4xl mb-10'>{cart.length > 0 ? 'Your Cart' : 'Opps! Your Cart is Empty'}</h1>
+        <h1 className='text-center font-bold text-4xl mb-10'>{cartProducts.length > 0 ? 'Your Cart' : 'Opps! Your Cart is Empty'}</h1>
 
         <div className={`cart_container mt-5`}>
-            {cart.length > 0 ?
+            {cartProducts.length > 0 ?
                 <div className='flex gap-5 lg:gap-12 w-full'>
                     <div className="cart_products w-[60%]">
                         <CartProducts/>

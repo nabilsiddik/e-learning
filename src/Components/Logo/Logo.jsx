@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/10mslogo-svg.svg'
+import logo from '../../assets/iSchool.png'
 import PropTypes from 'prop-types'
 
 const Logo = ({width}) => {

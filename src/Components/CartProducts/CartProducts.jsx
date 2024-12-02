@@ -1,15 +1,16 @@
 import React, { useContext } from 'react'
 import { shopContext } from '../../Contexts/ShopContext/ShopContext'
 import CartProduct from '../CartProduct/CartProduct'
+import { courseContext } from '../../Contexts/CourseContext/CourseContext'
 
 const CartProducts = () => {
 
-    const {cart} = useContext(shopContext)
+    const {cartProducts} = useContext(courseContext)
 
   return (
     <div>
-      {cart.map((cartItem) => {
-            return <CartProduct key={cartItem.id} cartItem = {cartItem}/>
+      {cartProducts.map((cartItem) => {
+            return <CartProduct key={cartItem._id} cartItem = {cartItem}/>
       })} 
     </div>
   )

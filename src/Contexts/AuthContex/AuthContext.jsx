@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { auth } from '../../Firebase/firebase.init'
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import Swal from 'sweetalert2'
 
 export const authContext = createContext(null)
@@ -44,23 +44,6 @@ const AuthContext = ({ children }) => {
     // Login with email and password
     const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                Swal.fire({
-                    position: "center center",
-                    icon: "success",
-                    title: "Login Successful!",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            })
-            .catch((error) => {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: `${error.code}. ${error.message}`
-                })
-            });
     }
 
 
@@ -87,9 +70,15 @@ const AuthContext = ({ children }) => {
     }
 
 
+    // Sign out
+    const userSignOut = () => {
+        return signOut(auth)
+    }
+
+
     // Currently Signed In user
     useEffect(() => {
-        onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser)
                 console.log(user)
@@ -98,6 +87,10 @@ const AuthContext = ({ children }) => {
                 console.log('No user signed in')
             }
         })
+
+        return () => {
+            unsubscribe()
+        }
     })
 
     const authContextValue = {
@@ -105,7 +98,11 @@ const AuthContext = ({ children }) => {
         createUser,
         profileUpdate,
         signInWithGoogle,
-        signIn
+        signIn,
+        user,
+        loading,
+        setLoading,
+        userSignOut,
     }
 
     return (
