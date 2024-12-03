@@ -1,21 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const OrderItemList = ({order}) => {
-
-    const {bkashNumber, transectionId, userEmail, userName, userPhotoUrl, totalAmount} = order
-
-    return (
-        <div id='course_item_list' className='bg-success py-3 px-4 rounded-lg mb-3 text-white flex items-center justify-between'>
+const MyOrderItem = ({course}) => {
+  return (
+    <div id='course_item_list' className='bg-success py-3 px-4 rounded-lg mb-3 text-white flex items-center justify-between'>
             <div className="flex items-center gap-5">
                 <div className="course_thumbnail">
-                    <img className='w-[120px] rounded-lg' src={userPhotoUrl} alt="course thumbnail" />
+                    <img className='w-[120px] rounded-lg' src={course.userPhotoUrl} alt="course thumbnail" />
                 </div>
                 <div>
-                    <h3 className='font-bold text-lg'>{userName}</h3>
-                    <p>User Email: {userEmail}</p>
-                    <p>Bkash Number: {bkashNumber}</p>
-                    <p>Transection ID: {transectionId}</p>
-                    <p>Total Amount Should Be: BDT {totalAmount}</p>
+                    <h3 className='font-bold text-lg'>{course.userName}</h3>
+                    <p>User Email: {course.userEmail}</p>
+                    <p>Bkash Number: {course.bkashNumber}</p>
+                    <p>Transection ID: {course.transectionId}</p>
+                    <p>Total Amount Should Be: BDT {course.totalAmount}</p>
                     {/* <div className="flex items-center gap-4">
                         <p className="regular_price">Discounted Price: ${discountedPrice}</p>
                         <p className="regular_price">Regular Price: <del>${regularPrice}</del></p>
@@ -32,7 +30,7 @@ const OrderItemList = ({order}) => {
                 </div>
             </div> */}
         </div>
-    )
+  )
 }
 
-export default OrderItemList
+export default MyOrderItem

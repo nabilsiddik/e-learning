@@ -29,7 +29,7 @@ const SingleProduct = () => {
       <div className="container">
         <div className="page_body mt-5">
             <div className="left w-[60%]">
-                <CourseModules />
+                <CourseModules course = {loadedCourse} />
             </div>
         </div>
       </div>

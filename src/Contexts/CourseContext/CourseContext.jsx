@@ -22,6 +22,12 @@ const CourseContext = (props) => {
   }, [courses])
 
 
+  // Get Total amount
+  const getTotalAmount = (cartProducts) => {
+    return cartProducts.reduce((acc, curr) => {
+        return acc + parseInt(curr.discountedPrice)
+    }, 0)
+}
 
   // Short a text
   const shortenText = (text, numOfChar) => {
@@ -43,7 +49,8 @@ const CourseContext = (props) => {
     setIsLogedIn,
     cartProducts,
     setCartProducts,
-    setCourses
+    setCourses,
+    getTotalAmount
   }
 
   return (

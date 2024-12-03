@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import bkashLogo from '../../assets/bkash-logo.webp'
 import { authContext } from '../../Contexts/AuthContex/AuthContext'
+import { courseContext } from '../../Contexts/CourseContext/CourseContext'
 
 const PaymentPage = () => {
 
     const {user} = useContext(authContext)
+    const {getTotalAmount, cartProducts} = useContext(courseContext)
 
     const handleOrderSubmit = (e) => {
         e.preventDefault()
@@ -14,12 +16,14 @@ const PaymentPage = () => {
         const userEmail = user?.email
         const userName = user?.displayName
         const userPhotoUrl = user?.photoURL
+        const totalAmount = getTotalAmount(cartProducts)
         
         const order = {
             bkashNumber,
             transectionId,
             userEmail,
             userName,
+            totalAmount,
             userPhotoUrl
         }
 
@@ -53,7 +57,7 @@ const PaymentPage = () => {
                             <li>১/ আপনার Bkash App এ যান অথবা *247# ডায়াল করুন</li>
                             <li>২/ "Send Money" সিলেক্ট করুন</li>
                             <li>৩/ নিচের বিকাশ নাম্বার টি Enter করুন</li>
-                            <li>৪/ <b>টোটাল এমাউন্ট</b> Enter করুন</li>
+                            <li>৪/ <b>টোটাল এমাউন্ট</b> (BDT {getTotalAmount(cartProducts)}) Enter করুন</li>
                             <li>৫/ এখন আপনার Bkash একাউন্টের পিন নম্বর Enter করে ট্রাঞ্জেকশন টি কনফার্ম করুন</li>
                             <li>৬/ পেমেন্ট কনফার্মেশন মেসেজ থেকে ট্রাঞ্জেকশন আইডি কপি করে নিচে Enter করুন</li>
                             <li>৭/ এর পর অর্ডার টি সাবমিট করুন</li>

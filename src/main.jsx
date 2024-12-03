@@ -29,6 +29,10 @@ import PrivateDashboard from './PrivateRoutes/PrivateDashboard/PrivateDashboard'
 import ProfilePage from './Pages/ProfilePage/ProfilePage.jsx'
 import PaymentPage from './Pages/PaymentPage/PaymentPage.jsx'
 import AllOrders from './Components/AllOrders/AllOrders.jsx'
+import UpdateProfile from './Components/UpdateProfile/UpdateProfile.jsx'
+import MyCourses from './Components/MyOrders/MyOrders.jsx'
+import MyOrders from './Components/MyOrders/MyOrders.jsx'
+import CertificatePage from './Pages/CertificatePage/CertificatePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -67,16 +71,32 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) 
       },
       {
+        path: '/video-lecture/:id',
+        element: <VideoPage/>,
+        loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+      },
+      {
         path: '/video/:videoTitle/:videoId',
         element: <VideoPage/>
       },
       {
-        path: '/contact',
-        element: <Contact/>
+        path: '/certificate',
+        element: <CertificatePage/>
       },
       {
         path: '/profile',
-        element: <ProfilePage/>
+        element: <ProfilePage/>,
+        children: [
+          {
+            path: 'update-profile',
+            element: <UpdateProfile/>,
+          },
+          {
+            path: 'my-courses',
+            element: <MyOrders/>,
+            loader: ({params}) => fetch(`http://localhost:5000/orders`)
+          }
+        ]
       },
       {
         path: '/payment',

@@ -79,13 +79,8 @@ const AuthContext = ({ children }) => {
     // Currently Signed In user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                setUser(currentUser)
-                console.log(user)
-                setLoading(false)
-            } else {
-                console.log('No user signed in')
-            }
+            setUser(currentUser)
+            setLoading(false)
         })
 
         return () => {

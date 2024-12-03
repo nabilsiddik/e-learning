@@ -19,10 +19,12 @@ const AddCourse = () => {
     const moduleTitle = form.moduleTitle.value
     const moduleVideoLink = form.moduleVideoLink.value
   
-    const newCourse = { title, thumbnailUrl, description, regularPrice, discountedPrice, category, isOnCart: false, module: {
-      moduleTitle,
-      moduleVideoLink
-    }}
+    const newCourse = { title, thumbnailUrl, description, regularPrice, discountedPrice, category, isOnCart: false, module: [
+      {
+        moduleTitle,
+        moduleVideoLink
+      }
+    ]}
   
     fetch(`http://localhost:5000/add-course`, {
       method: 'POST',

@@ -5,14 +5,7 @@ import { Link } from 'react-router-dom'
 
 const CartCalculation = () => {
 
-    const {cartProducts} = useContext(courseContext)
-
-    // Get Total amount
-    const getTotalAmount = (cartProducts) => {
-        return cartProducts.reduce((acc, curr) => {
-            return acc + parseInt(curr.discountedPrice)
-        }, 0)
-    }
+    const {cartProducts, getTotalAmount} = useContext(courseContext)
     
 
     // Calculate Coupon

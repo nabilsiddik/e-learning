@@ -67,14 +67,14 @@ const Course = ({ course }) => {
                     <p>{shortenText(description, 50)}</p>
                     <div className="prices flex items-center gap-3">
                         <span className="discounted_price font-bold">
-                            ${discountedPrice}
+                            BDT {discountedPrice}
                         </span>
                         <span className="regular_price font-bold">
-                            <del>${regularPrice}</del>
+                            <del>BDT {regularPrice}</del>
                         </span>
                     </div>
                     <div className="card-actions justify-end">
-                        <button onClick={handleEnrollButton} className="w-full btn btn-warning">{isOnCart ? 'Enrolled' : 'Enroll Now'}</button>
+                        <button onClick={handleEnrollButton} className="w-full btn btn-warning">{isOnCart ? 'Added To Cart' : 'Add To Cart'}</button>
                     </div>
                 </div>
             </div>
