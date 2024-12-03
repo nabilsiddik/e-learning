@@ -10,12 +10,12 @@ const Home = () => {
   const courses = useLoaderData()
 
   return (
-    <div id='home_page' className='py-5'>
-      <Slider/>
+    <div id='home_page' className=''>
+      <Slider />
       <div className="container">
-        <h2 className='font-bold text-2xl mb-5'>All Courses</h2>
-        <div className="display_all_courses">
-          <DisplayCourses mapFrom={courses}/>
+        <div className="display_all_courses my-16">
+          <h2 className='font-bold text-4xl text-center mb-5'>Our Courses</h2>
+          <DisplayCourses mapFrom={courses} />
         </div>
       </div>
     </div>

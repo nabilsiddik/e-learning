@@ -41,7 +41,9 @@ const CourseContext = (props) => {
     getCourseUsingId,
     isLogedIn,
     setIsLogedIn,
-    cartProducts
+    cartProducts,
+    setCartProducts,
+    setCourses
   }
 
   return (

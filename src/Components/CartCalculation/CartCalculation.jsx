@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { shopContext } from '../../Contexts/ShopContext/ShopContext'
 import { courseContext } from '../../Contexts/CourseContext/CourseContext'
+import { Link } from 'react-router-dom'
 
 const CartCalculation = () => {
 
@@ -56,7 +57,7 @@ const CartCalculation = () => {
         <h3 className='font-bold text-lg'>${getTotalAmount(cartProducts) - calculateCouponAmount('percentage', 30, getTotalAmount(cartProducts))}</h3>
       </div> */}
 
-      <button className='btn btn-success text-white  font-bold text-lg w-full mt-8'>Checkout Now</button>
+      <Link to='/payment' className='btn btn-success text-white  font-bold text-lg w-full mt-8'>Checkout Now</Link>
     </div>
   )
 }

@@ -13,6 +13,7 @@ const AdminDashboard = () => {
             <li><Link to='/admin-dashboard/add-course'><button className='btn btn-success text-white'>Add Course</button></Link></li>
             <li><Link to='/admin-dashboard/all-course'><button className='btn btn-success text-white'>All Courses</button></Link></li>
             <li><Link to='/admin-dashboard/all-users'><button className='btn btn-success text-white'>All Users</button></Link></li>
+            <li><Link to='/admin-dashboard/all-orders'><button className='btn btn-success text-white'>All Orders</button></Link></li>
           </ul>
         </div>
 

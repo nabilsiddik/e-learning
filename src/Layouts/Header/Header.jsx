@@ -42,7 +42,7 @@ const Header = () => {
             <div className="container lg:flex items-center justify-between py-5">
                 <div className="logo_and_serach flex items-center gap-5">
                     <Logo width={'100px'} />
-                    <SearchCourse placeholder='Search course...' />
+                    {/* <SearchCourse placeholder='Search course...' /> */}
                 </div>
 
                 <nav className="menu">

@@ -7,49 +7,47 @@ import Swal from 'sweetalert2';
 
 const Course = ({ course }) => {
 
-    const { shortenText, allCourses, setAllCourses } = useContext(courseContext)
-    const { _id, title, thumbnailUrl, description, price, category, isOnCart } = course
+    const { shortenText, setCourses } = useContext(courseContext)
+    const { _id, title, thumbnailUrl, description, price, category, isOnCart, regularPrice, discountedPrice } = course
 
     const handleEnrollButton = () => {
-        const handleEnrollButton = () => {
-            fetch(`http://localhost:5000/courses/${_id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ isOnCart: true })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Course successfully enrolled!",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        })
-                    } else {
-                        Swal.fire({
-                            position: "center",
-                            icon: "error",
-                            title: data.message || "Could not enroll!",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                    }
-                })
-                .catch((error) => {
-                    console.error("Error updating isOnCart:", error);
+        fetch(`http://localhost:5000/courses/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ isOnCart: true })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Course successfully enrolled!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    })
+                } else {
                     Swal.fire({
                         position: "center",
                         icon: "error",
-                        title: "Something went wrong!",
+                        title: data.message || "Could not enroll!",
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                })
-        }
+                }
+            })
+            .catch((error) => {
+                console.error("Error updating isOnCart:", error);
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something went wrong!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
     }
 
     return (
@@ -69,10 +67,10 @@ const Course = ({ course }) => {
                     <p>{shortenText(description, 50)}</p>
                     <div className="prices flex items-center gap-3">
                         <span className="discounted_price font-bold">
-                            ${price}
+                            ${discountedPrice}
                         </span>
                         <span className="regular_price font-bold">
-                            <del>100</del>
+                            <del>${regularPrice}</del>
                         </span>
                     </div>
                     <div className="card-actions justify-end">

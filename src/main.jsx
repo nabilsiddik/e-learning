@@ -27,6 +27,8 @@ import LoginPage from './Pages/LoginPage/LoginPage.jsx'
 import AllUsers from './Components/AllUsers/AllUsers.jsx'
 import PrivateDashboard from './PrivateRoutes/PrivateDashboard/PrivateDashboard';
 import ProfilePage from './Pages/ProfilePage/ProfilePage.jsx'
+import PaymentPage from './Pages/PaymentPage/PaymentPage.jsx'
+import AllOrders from './Components/AllOrders/AllOrders.jsx'
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,10 @@ const router = createBrowserRouter([
         element: <ProfilePage/>
       },
       {
+        path: '/payment',
+        element: <PaymentPage/>
+      },
+      {
         path: '/update-course/:id',
         element: <UpdatePage/>,
         loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
@@ -99,6 +105,13 @@ const router = createBrowserRouter([
               <AllCoursesOfInstructor/>
             </PrivateDashboard>,
             loader: () => fetch('http://localhost:5000/courses')
+          },
+          {
+            path: '/admin-dashboard/all-orders',
+            element: <PrivateDashboard>
+              <AllOrders/>
+            </PrivateDashboard>,
+            loader: () => fetch('http://localhost:5000/orders')
           },
           {
             path: '/admin-dashboard/all-users',

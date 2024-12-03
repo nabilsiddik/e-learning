@@ -56,7 +56,6 @@ const CourseItemList = ({ course, allCoursesOfInstructor, setAllCoursesOfInstruc
                 <div>
                     <h3 className='font-bold text-lg'>{title}</h3>
                     <p>Category: {category}</p>
-                    <p>Description: {description}</p>
                     <div className="flex items-center gap-4">
                         <p className="regular_price">Discounted Price: ${discountedPrice}</p>
                         <p className="regular_price">Regular Price: <del>${regularPrice}</del></p>

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 
 const EnrolCard = ({ course }) => {
 
-    const { _id, thumbnailUrl, isOnCart, module: { moduleTitle, moduleVideoLink } } = course
+    const { _id, thumbnailUrl, isOnCart, discountedPrice, regularPrice, module: { moduleTitle, moduleVideoLink } } = course
 
     const [playVideo, setPlayVideo] = useState(false)
 
@@ -84,43 +84,17 @@ const EnrolCard = ({ course }) => {
             </div>
 
 
-            <div className="body px-3">
+            <div className="body px-3 pb-3">
                 <div className="price flex item-center gap-2 mt-5 mb-1">
                     <span className="discounted_price font-bold text-xl">
-                        ${ }
+                        ${discountedPrice}
                     </span>
                     <span className="discounted_price text-lg">
-                        <del>${ }</del>
+                        <del>${regularPrice}</del>
                     </span>
                 </div>
                 <h3 className='font-bold text-lg mb-4'>{ }</h3>
                 <button onClick={handleEnrollButton} className='btn btn-success text-white w-full font-bold text-lg'>{isOnCart ? 'Enrolled' : 'Enroll Course'}</button>
-
-                <div className="course_have my-8">
-                    <h3 className='font-bold text-lg mb-2'>This Course Has</h3>
-                    <ul className='flex flex-col gap-2'>
-                        <li className='flex items-center gap-4 text-lg'>
-                            <span><MdOutlinePayment /></span>
-                            <span>Total Enrolled { }</span>
-                        </li>
-                        <li className='flex items-center gap-4 text-lg'>
-                            <span><CiStopwatch /></span>
-                            <span>Time Required { }</span>
-                        </li>
-                        <li className='flex items-center gap-4 text-lg'>
-                            <span><IoVideocamOutline /></span>
-                            <span>{ } Video Lectures</span>
-                        </li>
-                        <li className='flex items-center gap-4 text-lg'>
-                            <span><MdOutlineQuiz /></span>
-                            <span>{ } Quiz</span>
-                        </li>
-                        <li className='flex items-center gap-4 text-lg'>
-                            <span><GrNotes /></span>
-                            <span>{ } Notes</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     )
